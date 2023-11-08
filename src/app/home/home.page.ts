@@ -29,13 +29,8 @@ export class HomePage {
     // The location of Uluru
     const position = { lat: -22.516133, lng: -48.566900 };
 
-    // Request needed libraries.
-    //@ts-ignore
-    const { Map } = await google.maps.importLibrary("maps") as google.maps.MapsLibrary;
-
-
     // The map, centered at Uluru
-    this.map = new Map(
+    this.map = new google.maps.Map(
       this.mapRef.nativeElement,
       {
         zoom: 16,
@@ -74,9 +69,7 @@ export class HomePage {
 
   async adicionarMarcador(position: google.maps.LatLng) {
 
-    const { AdvancedMarkerElement } = await google.maps.importLibrary("marker") as google.maps.MarkerLibrary;
-
-    const marker = new AdvancedMarkerElement({
+    const marker = new google.maps.Marker({
       map: this.map,
       position: position,
       title: 'Marcador'
